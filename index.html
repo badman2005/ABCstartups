@@ -3,189 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABCstartups | Engineering Smart Digital Solutions & Hardware Infrastructure</title>
+    <title>ABCstartups | Engineering Software & Hardware Infrastructure</title>
     <style>
         :root {
-            --bg-color: #0f1115;
-            --card-bg: #181b22;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
+            --bg-base: #090d16;
+            --bg-card: #111827;
+            --border-color: rgba(56, 189, 248, 0.15);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-color: #2d3748;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-base);
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.7;
+            padding: 0 1rem;
         }
-
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 4rem 0;
+        }
+        /* Navigation / Branding Header */
+        .site-header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+        .brand-logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
+        /* Hero Section */
         header {
             text-align: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 30px;
+            padding: 2rem 0 4rem 0;
         }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .tagline {
-            font-size: 1.1rem;
+        header p {
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 20px auto;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
         }
-
-        .badge-container {
+        .hero-cta {
             display: flex;
+            gap: 1rem;
             justify-content: center;
-            gap: 15px;
-            font-size: 0.9rem;
-            color: var(--accent-color);
+            flex-wrap: wrap;
+        }
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
         }
-
-        section {
-            margin-bottom: 40px;
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-base);
+            box-shadow: 0 4px 20px var(--accent-glow);
         }
-
-        h2 {
+        .btn-primary:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Section Titles */
+        .section-title {
             font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 12px;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem 0;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent);
+            padding-left: 0.75rem;
         }
 
+        /* Grid Layout */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
-
         .card {
-            background-color: var(--card-bg);
+            background-color: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            transition: transform 0.2s, border-color 0.2s;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-
         .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
-
         .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
         }
-
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .tag-list li {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
         }
 
-        .contact-box {
-            background-color: var(--card-bg);
+        /* Founder Section */
+        .founder-section {
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(17, 24, 39, 0.4) 100%);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
             text-align: center;
         }
-
-        .contact-box p {
+        .founder-avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 1.2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .founder-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+        .founder-section p {
             color: var(--text-muted);
-            margin-bottom: 20px;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+            font-size: 1.05rem;
+        }
+        
+        /* Modal / Hidden Bio Details */
+        .bio-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 0 1.5rem;
+            margin-top: 1rem;
+        }
+        .bio-content.open {
+            max-height: 350px;
+            opacity: 1;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
-
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 5rem;
             color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+            padding-top: 2rem;
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- Navigation & Branding Header ID -->
+        <nav class="site-header-nav">
+            <a href="#" class="brand-logo">
+                <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.827.01c-4.596-.216-8.461 3.107-9.12 7.487-.027.203-.066.4-.099.596-1.025 5.454-5.797 9.584-11.53 9.584a11.67 11.67 0 0 1-5.634-1.442.298.298 0 0 0-.444.262v18.854h17.602V22.097c0-2.439 1.971-4.419 4.4-4.419h4.4c4.982 0 8.99-4.15 8.795-9.197C35.02 3.937 31.35.226 26.827.01Z"></path>
+                </svg>
+                ABCSTARTUPS
+            </a>
+            <ul class="nav-links">
+                <li><a href="#work">Competencies</a></li>
+                <li><a href="#showcase">Portfolio</a></li>
+                <li><a href="#founder">Founder</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
         <header>
+            <span class="badge">Next-Gen Tech Solutions</span>
             <h1>ABCstartups</h1>
-            <p class="tagline">Engineering smart digital solutions and reliable hardware infrastructure from the ground up.</p>
-            <div class="badge-container">
-                <span>EasyTech</span>
-                <span>•</span>
-                <span>Kachi Cables</span>
+            <p>Architecting high-performance digital software ecosystems through EasyTech and delivering bulletproof hardware diagnostics and maintenance via Kachi Cables.</p>
+            <div class="hero-cta">
+                <a href="#work" class="btn btn-primary">Explore Our Work</a>
+                <a href="#founder" class="btn btn-secondary">Meet the Founder</a>
             </div>
         </header>
 
-        <section>
-            <h2>What We Do</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>EasyTech</h3>
-                    <p>Building responsive, custom web applications, dynamic database architectures, and tailored digital platforms engineered for clean performance.</p>
-                </div>
-                <div class="card">
-                    <h3>Kachi Cables</h3>
-                    <p>Delivering hands-on hardware diagnostics, low-level troubleshooting, precision system maintenance, and robust IT infrastructure support.</p>
-                </div>
+        <!-- Core Competencies Grid -->
+        <h2 class="section-title" id="work">Our Core Competencies</h2>
+        <main class="grid">
+            <!-- EasyTech Division -->
+            <section class="card">
+                <h3>EasyTech (Software)</h3>
+                <p>Engineering robust, zero-bloat web applications, localized delivery logistics platforms (like senaEats), and custom backend architectures optimized for speed and reliability.</p>
+                <ul class="tag-list">
+                    <li>Full-Stack Development</li>
+                    <li>PHP & MariaDB</li>
+                    <li>API & Escrow Systems</li>
+                    <li>Leaflet.js Integration</li>
+                </ul>
+                <a href="https://github.com/badman2005" target="_blank" class="btn btn-secondary" style="width: 100%;">View GitHub Repos</a>
+            </section>
+
+            <!-- Kachi Cables Division -->
+            <section class="card">
+                <h3>Kachi Cables (Hardware)</h3>
+                <p>Providing precision computer hardware engineering, low-level component diagnostics, thermal optimization, performance upgrades, and secure Linux/Windows deployments.</p>
+                <ul class="tag-list">
+                    <li>Hardware Diagnostics</li>
+                    <li>Component Upgrades</li>
+                    <li>OS Flashing & Recovery</li>
+                    <li>Network Configuration</li>
+                </ul>
+                <a href="mailto:ckachimfya18@gmail.com" class="btn btn-secondary" style="width: 100%;">Request Hardware Service</a>
+            </section>
+        </main>
+
+        <!-- Portfolio Showcase Preview -->
+        <h2 class="section-title" id="showcase">Featured Project Showcase</h2>
+        <div class="grid">
+            <section class="card">
+                <h3>senaEats Platform</h3>
+                <p>A zero-budget peer-to-peer township food delivery web application built with PHP, MariaDB, and interactive Leaflet map routing featuring local escrow verification workflows.</p>
+                <ul class="tag-list">
+                    <li>PHP Backend</li>
+                    <li>MariaDB Schema</li>
+                    <li>Leaflet.js Mapping</li>
+                </ul>
+                <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Active Development</span>
+            </section>
+            
+            <section class="card">
+                <h3>Hardware Diagnostics Hub</h3>
+                <p>Specialized system recovery workflows, BIOS flash management, and lightweight Linux environments (antiX/Lubuntu) configured for maximum efficiency on low-spec hardware.</p>
+                <ul class="tag-list">
+                    <li>antiX Linux</li>
+                    <li>BIOS Recovery</li>
+                    <li>Terminal Tooling</li>
+                </ul>
+                <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Infrastructure Ops</span>
+            </section>
+        </div>
+
+        <!-- Founder Section with Toggle Feature & Silhouette Avatar -->
+        <section class="founder-section" id="founder">
+            <div class="founder-avatar-placeholder">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h2>Driven by First-Principles Engineering</h2>
+            <p>ABCstartups was built on the philosophy that robust technology shouldn't rely on heavy bloatware—it should be efficient, reliable, and engineered precisely to solve real-world problems.</p>
+            
+            <button onclick="toggleBio()" class="btn btn-primary" id="bio-btn">About the Owner & Developer</button>
+
+            <div class="bio-content" id="bio-box">
+                <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Kachimfya Chanda</h3>
+                <p style="margin-bottom: 0.75rem; color: var(--text-main);"><strong>Founder & Lead Architect</strong></p>
+                <p>Final-year BSc Computer Science student at Mulungushi University and systems builder. Operating at the intersection of full-stack web engineering and hardware maintenance, dedicated to building self-contained, high-efficiency digital tools and infrastructure.</p>
             </div>
         </section>
 
-        <section>
-            <h2>Get In Touch</h2>
-            <div class="contact-box">
-                <p>Have a tech project, a web development request, or a hardware problem that needs fixing? Let's build a working solution together.</p>
-                <a href="mailto:ckachimfya18@gmail.com" class="btn">Reach Out via Email</a>
-            </div>
-        </section>
-
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 powered by ABCstartups</p>
+            <p>&copy; 2026 ABCstartups. All rights reserved. Powered by <a href="https://render.com" target="_blank">Render</a>.</p>
         </footer>
     </div>
+
+    <script>
+        function toggleBio() {
+            const box = document.getElementById('bio-box');
+            const btn = document.getElementById('bio-btn');
+            box.classList.toggle('open');
+            if (box.classList.contains('open')) {
+                btn.textContent = 'Hide Bio';
+            } else {
+                btn.textContent = 'About the Owner & Developer';
+            }
+        }
+    </script>
 
 </body>
 </html>
