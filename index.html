@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABCstartups | Engineering Software & Hardware Infrastructure</title>
+    <title>ABCstartups | Professional Software & Hardware Engineering</title>
     <style>
         :root {
-            --bg-base: #090d16;
-            --bg-card: #111827;
-            --border-color: rgba(56, 189, 248, 0.15);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.2);
-            --gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --bg-base: #f8fafc;        /* Clean, bright off-white background */
+            --bg-card: #ffffff;        /* Pure white cards for high contrast and readability */
+            --bg-dark: #0f172a;        /* Deep professional navy for footer/contrast */
+            --border-color: #e2e8f0;   /* Soft gray border */
+            --text-main: #1e293b;      /* Dark slate for readable text */
+            --text-muted: #64748b;     /* Balanced gray for secondary text */
+            --accent: #0284c7;         /* Professional trust blue */
+            --accent-hover: #0369a1;   /* Deeper blue on hover */
+            --accent-gold: #d97706;    /* Warm amber accent for elite engineering touch */
         }
         * {
             margin: 0;
@@ -30,29 +31,33 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
         /* Navigation / Branding Header */
         .site-header-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
             margin-bottom: 3rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .brand-logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--bg-dark);
             font-weight: 800;
             font-size: 1.25rem;
+            letter-spacing: -0.02em;
         }
         .brand-logo svg {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             fill: var(--accent);
         }
         .nav-links {
@@ -64,6 +69,7 @@
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.2s;
         }
         .nav-links a:hover {
@@ -77,27 +83,25 @@
         }
         .badge {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(2, 132, 199, 0.08);
             color: var(--accent);
             padding: 0.35rem 1rem;
             border-radius: 9999px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(2, 132, 199, 0.2);
         }
         header h1 {
             font-size: 3rem;
             font-weight: 900;
             letter-spacing: -0.03em;
             margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--bg-dark);
         }
         header p {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             max-width: 700px;
             margin: 0 auto 2rem auto;
         }
@@ -123,20 +127,22 @@
         }
         .btn-primary {
             background: var(--accent);
-            color: var(--bg-base);
-            box-shadow: 0 4px 20px var(--accent-glow);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
         }
         .btn-primary:hover {
-            background: #0ea5e9;
+            background: var(--accent-hover);
             transform: translateY(-2px);
         }
         .btn-secondary {
             background: var(--bg-card);
-            color: var(--text-main);
+            color: var(--bg-dark);
             border: 1px solid var(--border-color);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
         .btn-secondary:hover {
             border-color: var(--accent);
+            color: var(--accent);
             transform: translateY(-2px);
         }
         
@@ -145,7 +151,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin: 3rem 0 1.5rem 0;
-            color: var(--text-main);
+            color: var(--bg-dark);
             border-left: 4px solid var(--accent);
             padding-left: 0.75rem;
         }
@@ -162,17 +168,17 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2.5rem 2rem;
-            position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
         .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.75rem;
-            color: var(--accent);
+            color: var(--bg-dark);
         }
         .card p {
             color: var(--text-muted);
@@ -187,27 +193,29 @@
             margin-bottom: 2rem;
         }
         .tag-list li {
-            background: rgba(255, 255, 255, 0.03);
+            background: #f1f5f9;
             color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             padding: 0.25rem 0.75rem;
             border-radius: 6px;
             font-size: 0.8rem;
+            font-weight: 500;
         }
 
         /* Founder Section */
         .founder-section {
-            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(17, 24, 39, 0.4) 100%);
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 3rem 2rem;
             margin-top: 4rem;
             text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
         }
         .founder-avatar-placeholder {
             width: 80px;
             height: 80px;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(2, 132, 199, 0.08);
             border: 2px solid var(--accent);
             border-radius: 50%;
             margin: 0 auto 1.2rem auto;
@@ -216,12 +224,11 @@
             justify-content: center;
             color: var(--accent);
             font-size: 1.8rem;
-            font-weight: bold;
         }
         .founder-section h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: var(--text-main);
+            color: var(--bg-dark);
         }
         .founder-section p {
             color: var(--text-muted);
@@ -237,10 +244,11 @@
             transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
             opacity: 0;
             text-align: left;
-            background: rgba(0, 0, 0, 0.2);
+            background: #f8fafc;
             border-radius: 8px;
             padding: 0 1.5rem;
             margin-top: 1rem;
+            border: 1px solid transparent;
         }
         .bio-content.open {
             max-height: 350px;
@@ -251,15 +259,16 @@
 
         /* Footer */
         footer {
+            background: var(--bg-dark);
+            color: #94a3b8;
             text-align: center;
             margin-top: 5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
+            padding: 3rem 1rem;
+            border-radius: 16px 16px 0 0;
+            font-size: 0.9rem;
         }
         footer a {
-            color: var(--accent);
+            color: #38bdf8;
             text-decoration: none;
         }
     </style>
@@ -276,80 +285,80 @@
                 ABCSTARTUPS
             </a>
             <ul class="nav-links">
-                <li><a href="#work">Competencies</a></li>
-                <li><a href="#showcase">Portfolio</a></li>
-                <li><a href="#founder">Founder</a></li>
+                <li><a href="#work">Services</a></li>
+                <li><a href="#showcase">Projects</a></li>
+                <li><a href="#founder">About</a></li>
             </ul>
         </nav>
 
         <!-- Hero Section -->
         <header>
-            <span class="badge">Next-Gen Tech Solutions</span>
-            <h1>ABCstartups</h1>
-            <p>Architecting high-performance digital software ecosystems through EasyTech and delivering bulletproof hardware diagnostics and maintenance via Kachi Cables.</p>
+            <span class="badge">Trusted Engineering & IT Solutions</span>
+            <h1>Reliable Software & Hardware Infrastructure</h1>
+            <p>Empowering businesses and individuals through robust full-stack applications via EasyTech and precision hardware diagnostics through Kachi Cables.</p>
             <div class="hero-cta">
-                <a href="#work" class="btn btn-primary">Explore Our Work</a>
-                <a href="#founder" class="btn btn-secondary">Meet the Founder</a>
+                <a href="#work" class="btn btn-primary">Our Services</a>
+                <a href="#founder" class="btn btn-secondary">Meet the Architect</a>
             </div>
         </header>
 
         <!-- Core Competencies Grid -->
-        <h2 class="section-title" id="work">Our Core Competencies</h2>
+        <h2 class="section-title" id="work">Core Divisions</h2>
         <main class="grid">
             <!-- EasyTech Division -->
             <section class="card">
-                <h3>EasyTech (Software)</h3>
-                <p>Engineering robust, zero-bloat web applications, localized delivery logistics platforms (like senaEats), and custom backend architectures optimized for speed and reliability.</p>
+                <h3>EasyTech (Software Development)</h3>
+                <p>Building high-performance web applications, custom digital workflows, and reliable backend databases engineered for real-world business operations.</p>
                 <ul class="tag-list">
-                    <li>Full-Stack Development</li>
-                    <li>PHP & MariaDB</li>
-                    <li>API & Escrow Systems</li>
-                    <li>Leaflet.js Integration</li>
+                    <li>Web Applications</li>
+                    <li>Full-Stack Systems</li>
+                    <li>Database Design</li>
+                    <li>API Integration</li>
                 </ul>
-                <a href="https://github.com/badman2005" target="_blank" class="btn btn-secondary" style="width: 100%;">View GitHub Repos</a>
+                <a href="https://github.com/badman2005" target="_blank" class="btn btn-secondary" style="width: 100%;">View GitHub Work</a>
             </section>
 
             <!-- Kachi Cables Division -->
             <section class="card">
-                <h3>Kachi Cables (Hardware)</h3>
-                <p>Providing precision computer hardware engineering, low-level component diagnostics, thermal optimization, performance upgrades, and secure Linux/Windows deployments.</p>
+                <h3>Kachi Cables (Hardware & IT)</h3>
+                <p>Providing expert computer maintenance, hardware diagnostics, deep system recovery, and secure OS deployments to keep your equipment running at peak performance.</p>
                 <ul class="tag-list">
                     <li>Hardware Diagnostics</li>
                     <li>Component Upgrades</li>
                     <li>OS Flashing & Recovery</li>
-                    <li>Network Configuration</li>
+                    <li>Network Setup</li>
                 </ul>
-                <a href="mailto:ckachimfya18@gmail.com" class="btn btn-secondary" style="width: 100%;">Request Hardware Service</a>
+                <a href="mailto:ckachimfya18@gmail.com" class="btn btn-secondary" style="width: 100%;">Request Technical Support</a>
             </section>
         </main>
 
         <!-- Portfolio Showcase Preview -->
-        <h2 class="section-title" id="showcase">Featured Project Showcase</h2>
+        <h2 class="section-title" id="showcase">Featured Projects</h2>
         <div class="grid">
             <section class="card">
-                <h3>senaEats Platform</h3>
-                <p>A zero-budget peer-to-peer township food delivery web application built with PHP, MariaDB, and interactive Leaflet map routing featuring local escrow verification workflows.</p>
+                <h3>senaEats Logistics Platform</h3>
+                <p>A zero-budget peer-to-peer township delivery web application featuring backend order processing, database management, and interactive routing workflows.</p>
                 <ul class="tag-list">
-                    <li>PHP Backend</li>
-                    <li>MariaDB Schema</li>
+                    <li>PHP & MariaDB</li>
                     <li>Leaflet.js Mapping</li>
+                    <li>Escrow Logic</li>
                 </ul>
                 <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Active Development</span>
             </section>
             
             <section class="card">
-                <h3>Hardware Diagnostics Hub</h3>
-                <p>Specialized system recovery workflows, BIOS flash management, and lightweight Linux environments (antiX/Lubuntu) configured for maximum efficiency on low-spec hardware.</p>
+                <h3>System Infrastructure & Security</h3>
+                <p>Deploying lightweight, resource-efficient Linux environments and customized terminal workflows tailored for maximum reliability and hardware longevity.</p>
                 <ul class="tag-list">
-                    <li>antiX Linux</li>
+                    <li>Linux Administration</li>
                     <li>BIOS Recovery</li>
-                    <li>Terminal Tooling</li>
+                    <li>Optimization</li>
                 </ul>
-                <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Infrastructure Ops</span>
+                <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Operational Standard</span>
             </section>
         </div>
 
-        <!-- Founder Section with Toggle Feature & Silhouette Avatar -->
+        <!-- Founder Section with Toggle Feature -->
         <section class="founder-section" id="founder">
             <div class="founder-avatar-placeholder">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -357,23 +366,23 @@
                     <circle cx="12" cy="7" r="4"></circle>
                 </svg>
             </div>
-            <h2>Driven by First-Principles Engineering</h2>
-            <p>ABCstartups was built on the philosophy that robust technology shouldn't rely on heavy bloatware—it should be efficient, reliable, and engineered precisely to solve real-world problems.</p>
+            <h2>Built on First-Principles Engineering</h2>
+            <p>We believe professional technology solutions should be clean, dependable, and meticulously structured to solve genuine problems without unnecessary complexity.</p>
             
-            <button onclick="toggleBio()" class="btn btn-primary" id="bio-btn">About the Owner & Developer</button>
+            <button onclick="toggleBio()" class="btn btn-primary" id="bio-btn">About the Founder & Developer</button>
 
             <div class="bio-content" id="bio-box">
                 <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Kachimfya Chanda</h3>
                 <p style="margin-bottom: 0.75rem; color: var(--text-main);"><strong>Founder & Lead Architect</strong></p>
-                <p>Final-year BSc Computer Science student at Mulungushi University and systems builder. Operating at the intersection of full-stack web engineering and hardware maintenance, dedicated to building self-contained, high-efficiency digital tools and infrastructure.</p>
+                <p>Computer Science student and systems engineer dedicated to merging high-level software development with rigorous hardware maintenance. Focused on delivering solid, efficient, and practical digital solutions.</p>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2026 All rights reserved. Powered by <a href="https://render.com" target="_blank">ABCStartups</a>.</p>
-        </footer>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 All rights reserved. Powerd by ABCstartups</p>
+    </footer>
 
     <script>
         function toggleBio() {
@@ -383,7 +392,7 @@
             if (box.classList.contains('open')) {
                 btn.textContent = 'Hide Bio';
             } else {
-                btn.textContent = 'About the Owner & Developer';
+                btn.textContent = 'About the Founder & Developer';
             }
         }
     </script>
