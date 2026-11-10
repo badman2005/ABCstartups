@@ -1,401 +1,461 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABCstartups | Professional Software & Hardware Engineering</title>
-    <style>
-        :root {
-            --bg-base: #f8fafc;        /* Clean, bright off-white background */
-            --bg-card: #ffffff;        /* Pure white cards for high contrast and readability */
-            --bg-dark: #0f172a;        /* Deep professional navy for footer/contrast */
-            --border-color: #e2e8f0;   /* Soft gray border */
-            --text-main: #1e293b;      /* Dark slate for readable text */
-            --text-muted: #64748b;     /* Balanced gray for secondary text */
-            --accent: #0284c7;         /* Professional trust blue */
-            --accent-hover: #0369a1;   /* Deeper blue on hover */
-            --accent-gold: #d97706;    /* Warm amber accent for elite engineering touch */
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding: 0 1rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 0;
-        }
-        /* Navigation / Branding Header */
-        .site-header-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: var(--bg-dark);
-            font-weight: 800;
-            font-size: 1.25rem;
-            letter-spacing: -0.02em;
-        }
-        .brand-logo svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--accent);
-        }
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero Section */
-        header {
-            text-align: center;
-            padding: 2rem 0 4rem 0;
-        }
-        .badge {
-            display: inline-block;
-            background: rgba(2, 132, 199, 0.08);
-            color: var(--accent);
-            padding: 0.35rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            border: 1px solid rgba(2, 132, 199, 0.2);
-        }
-        header h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            margin-bottom: 1rem;
-            color: var(--bg-dark);
-        }
-        header p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-        }
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background: var(--accent);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: var(--bg-card);
-            color: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-        
-        /* Section Titles */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 3rem 0 1.5rem 0;
-            color: var(--bg-dark);
-            border-left: 4px solid var(--accent);
-            padding-left: 0.75rem;
-        }
-
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        }
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
-            color: var(--bg-dark);
-        }
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        .tag-list li {
-            background: #f1f5f9;
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Founder Section */
-        .founder-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-        }
-        .founder-avatar-placeholder {
-            width: 80px;
-            height: 80px;
-            background: rgba(2, 132, 199, 0.08);
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            margin: 0 auto 1.2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 1.8rem;
-        }
-        .founder-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--bg-dark);
-        }
-        .founder-section p {
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 1.5rem auto;
-            font-size: 1.05rem;
-        }
-        
-        /* Modal / Hidden Bio Details */
-        .bio-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
-            opacity: 0;
-            text-align: left;
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 0 1.5rem;
-            margin-top: 1rem;
-            border: 1px solid transparent;
-        }
-        .bio-content.open {
-            max-height: 350px;
-            opacity: 1;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-dark);
-            color: #94a3b8;
-            text-align: center;
-            margin-top: 5rem;
-            padding: 3rem 1rem;
-            border-radius: 16px 16px 0 0;
-            font-size: 0.9rem;
-        }
-        footer a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <!-- Navigation & Branding Header ID -->
-        <nav class="site-header-nav">
-            <a href="#" class="brand-logo">
-                <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M26.827.01c-4.596-.216-8.461 3.107-9.12 7.487-.027.203-.066.4-.099.596-1.025 5.454-5.797 9.584-11.53 9.584a11.67 11.67 0 0 1-5.634-1.442.298.298 0 0 0-.444.262v18.854h17.602V22.097c0-2.439 1.971-4.419 4.4-4.419h4.4c4.982 0 8.99-4.15 8.795-9.197C35.02 3.937 31.35.226 26.827.01Z"></path>
-                </svg>
-                ABCSTARTUPS
-            </a>
-            <ul class="nav-links">
-                <li><a href="#work">Services</a></li>
-                <li><a href="#showcase">Projects</a></li>
-                <li><a href="#founder">About</a></li>
-            </ul>
-        </nav>
-
-        <!-- Hero Section -->
-        <header>
-            <span class="badge">Trusted Engineering & IT Solutions</span>
-            <h1>Reliable Software & Hardware Infrastructure</h1>
-            <p>Empowering businesses and individuals through robust full-stack applications via EasyTech and precision hardware diagnostics through Kachi Cables.</p>
-            <div class="hero-cta">
-                <a href="#work" class="btn btn-primary">Our Services</a>
-                <a href="#founder" class="btn btn-secondary">Meet the Architect</a>
-            </div>
-        </header>
-
-        <!-- Core Competencies Grid -->
-        <h2 class="section-title" id="work">Core Divisions</h2>
-        <main class="grid">
-            <!-- EasyTech Division -->
-            <section class="card">
-                <h3>EasyTech (Software Development)</h3>
-                <p>Building high-performance web applications, custom digital workflows, and reliable backend databases engineered for real-world business operations.</p>
-                <ul class="tag-list">
-                    <li>Web Applications</li>
-                    <li>Full-Stack Systems</li>
-                    <li>Database Design</li>
-                    <li>API Integration</li>
-                </ul>
-                <a href="https://github.com/badman2005" target="_blank" class="btn btn-secondary" style="width: 100%;">View GitHub Work</a>
-            </section>
-
-            <!-- Kachi Cables Division -->
-            <section class="card">
-                <h3>Kachi Cables (Hardware & IT)</h3>
-                <p>Providing expert computer maintenance, hardware diagnostics, deep system recovery, and secure OS deployments to keep your equipment running at peak performance.</p>
-                <ul class="tag-list">
-                    <li>Hardware Diagnostics</li>
-                    <li>Component Upgrades</li>
-                    <li>OS Flashing & Recovery</li>
-                    <li>Network Setup</li>
-                </ul>
-                <a href="mailto:ckachimfya18@gmail.com" class="btn btn-secondary" style="width: 100%;">Request Technical Support</a>
-            </section>
-        </main>
-
-        <!-- Portfolio Showcase Preview -->
-        <h2 class="section-title" id="showcase">Featured Projects</h2>
-        <div class="grid">
-            <section class="card">
-                <h3>senaEats Logistics Platform</h3>
-                <p>A zero-budget peer-to-peer township delivery web application featuring backend order processing, database management, and interactive routing workflows.</p>
-                <ul class="tag-list">
-                    <li>PHP & MariaDB</li>
-                    <li>Leaflet.js Mapping</li>
-                    <li>Escrow Logic</li>
-                </ul>
-                <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Active Development</span>
-            </section>
-            
-            <section class="card">
-                <h3>System Infrastructure & Security</h3>
-                <p>Deploying lightweight, resource-efficient Linux environments and customized terminal workflows tailored for maximum reliability and hardware longevity.</p>
-                <ul class="tag-list">
-                    <li>Linux Administration</li>
-                    <li>BIOS Recovery</li>
-                    <li>Optimization</li>
-                </ul>
-                <span class="btn btn-secondary" style="width: 100%; opacity: 0.7; cursor: default;">Operational Standard</span>
-            </section>
-        </div>
-
-        <!-- Founder Section with Toggle Feature -->
-        <section class="founder-section" id="founder">
-            <div class="founder-avatar-placeholder">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-            </div>
-            <h2>Built on First-Principles Engineering</h2>
-            <p>We believe professional technology solutions should be clean, dependable, and meticulously structured to solve genuine problems without unnecessary complexity.</p>
-            
-            <button onclick="toggleBio()" class="btn btn-primary" id="bio-btn">About the Founder & Developer</button>
-
-            <div class="bio-content" id="bio-box">
-                <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Kachimfya Chanda</h3>
-                <p style="margin-bottom: 0.75rem; color: var(--text-main);"><strong>Founder & Lead Architect</strong></p>
-                <p>Computer Science student and systems engineer dedicated to merging high-level software development with rigorous hardware maintenance. Focused on delivering solid, efficient, and practical digital solutions.</p>
-            </div>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 All rights reserved. Powerd by ABCstartups</p>
-    </footer>
-
+    <title>ABCstartups // Software Engineering & Hardware Infrastructure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script>
-        function toggleBio() {
-            const box = document.getElementById('bio-box');
-            const btn = document.getElementById('bio-btn');
-            box.classList.toggle('open');
-            if (box.classList.contains('open')) {
-                btn.textContent = 'Hide Bio';
-            } else {
-                btn.textContent = 'About the Founder & Developer';
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151c2c',
+                            900: '#0f172a',
+                        },
+                        brand: {
+                            blue: '#2563eb',
+                            dark: '#0f172a',
+                            accent: '#3b82f6',
+                            light: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
             }
         }
     </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
 
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-slate-200 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/20">
+                    AS
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900">ABC<span class="text-blue-600">STARTUPS</span></span>
+                    <p class="text-[10px] text-slate-500 font-semibold tracking-widest uppercase">Engineering & Infrastructure</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                <a href="#divisions" class="hover:text-blue-600 transition-colors">Services</a>
+                <a href="#projects" class="hover:text-blue-600 transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="mailto:ckachimfya18@gmail.com" class="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-sm shadow-md shadow-blue-500/20 hover:bg-blue-700 transition-all">
+                    Get in Touch
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menuBtn" class="md:hidden text-slate-700 p-2 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 md:hidden flex justify-end">
+        <div class="w-72 bg-white h-full shadow-2xl p-6 flex flex-col gap-6 pt-24 font-medium text-slate-700">
+            <a href="#about" class="mobile-link hover:text-blue-600 border-b border-slate-100 pb-2">About</a>
+            <a href="#divisions" class="mobile-link hover:text-blue-600 border-b border-slate-100 pb-2">Services</a>
+            <a href="#projects" class="mobile-link hover:text-blue-600 border-b border-slate-100 pb-2">Portfolio</a>
+            <a href="#contact" class="mobile-link hover:text-blue-600 border-b border-slate-100 pb-2">Contact</a>
+            <a href="mailto:ckachimfya18@gmail.com" class="mt-auto py-3 text-center bg-blue-600 text-white font-semibold rounded-xl">Email Direct</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-36 pb-20 md:pt-48 md:pb-32 px-6 bg-gradient-to-b from-white to-slate-100 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-semibold text-xs mb-8">
+                <i class="fa-solid fa-circle-check text-blue-600"></i> Led by Kachimfya Chanda // Senanga & Kabwe, Zambia
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+                Robust Software Engineering & Hardware Infrastructure
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-normal mb-10 leading-relaxed">
+                ABCstartups bridges the gap between scalable digital applications (<span class="text-slate-900 font-semibold">EasyTech</span>) and dependable physical hardware maintenance and networking (<span class="text-slate-900 font-semibold">Kachi Cables</span>).
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold shadow-lg shadow-blue-500/25 hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
+                    <span>Explore Featured Work</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                    <span>Request Consultation</span>
+                </a>
+            </div>
+
+            <!-- Trust Bar / Key Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-slate-200/80 text-left">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Core Specialization</div>
+                    <div class="text-lg font-bold text-slate-900">Full-Stack & Systems</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Hardware Reliability</div>
+                    <div class="text-lg font-bold text-slate-900">Component Diagnostics</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Active Solutions</div>
+                    <div class="text-lg font-bold text-blue-600">senaEats & TITAN</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Operating Base</div>
+                    <div class="text-lg font-bold text-slate-900">Zambia [Remote / Onsite]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Bio Section -->
+    <section id="about" class="py-24 px-6 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+            <div class="md:col-span-1 text-center md:text-left">
+                <div class="w-48 h-48 mx-auto md:mx-0 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white text-5xl font-black shadow-xl shadow-blue-500/20">
+                    KC
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mt-6">Kachimfya Chanda</h3>
+                <p class="text-sm text-blue-600 font-semibold">Founder & Lead Engineer</p>
+                <p class="text-xs text-slate-500 mt-1">Senanga & Kabwe, Zambia</p>
+            </div>
+            <div class="md:col-span-2 space-y-4">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">// PROFESSIONAL PROFILE</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">First-Principles Engineering with a Focus on Efficiency.</h2>
+                <p class="text-slate-600 leading-relaxed font-normal">
+                    I am a versatile software and hardware engineer dedicated to building robust, high-performance systems that solve real-world logistical and operational challenges. Whether architecting decentralized web applications or performing complex motherboard diagnostics, my work prioritizes durability, speed, and resource efficiency.
+                </p>
+                <div class="pt-4 grid grid-cols-2 gap-4 text-sm font-semibold text-slate-700">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-blue-600"></i> PHP, MariaDB, & JavaScript
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-blue-600"></i> Linux Admin & antiX Workflows
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-blue-600"></i> Embedded IoT (ESP32 / Python)
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-blue-600"></i> Hardware Repair & BIOS Recovery
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Divisions Section -->
+    <section id="divisions" class="py-24 px-6 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">// OUR DIVISIONS</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">Comprehensive Technical Capability</h2>
+                <p class="text-slate-600 mt-2 max-w-xl mx-auto">Delivering excellence across digital software development and physical hardware infrastructure.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- EasyTech Division -->
+                <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold mb-6">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Division I</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-4">EasyTech Software Engineering</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Full-stack web applications, decentralized logistics platforms, and custom relational database architectures designed for optimal performance under constrained environments.
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-700 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-blue-600 mt-1"></i>
+                                <span><strong>High-Performance Backends:</strong> PHP and MariaDB architectures engineered for low latency and high concurrency.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-blue-600 mt-1"></i>
+                                <span><strong>Real-Time Logistics:</strong> Custom dispatch and escrow simulation workflows for regional commerce.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-blue-600 mt-1"></i>
+                                <span><strong>Lightweight Environments:</strong> Resource-efficient web interfaces optimized for mobile and desktop access.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">PHP</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">MariaDB</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">JavaScript</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Kachi Cables Division -->
+                <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold mb-6">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Division II</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-4">Kachi Cables Infrastructure</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Professional computer hardware maintenance, component-level diagnostics, network router configuration, and customized lightweight Linux operating system recovery.
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-700 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-indigo-600 mt-1"></i>
+                                <span><strong>Motherboard Diagnostics:</strong> Precision component repair, thermal optimization, and hardware upgrades.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-indigo-600 mt-1"></i>
+                                <span><strong>Network Infrastructure:</strong> Secure wireless router configuration and local network routing via NetworkManager / `nmcli`.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-indigo-600 mt-1"></i>
+                                <span><strong>Linux Resuscitation:</strong> Breathing new life into older hardware with optimized antiX and Lubuntu Linux environments.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">Hardware Diagnostics</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">Linux Terminal</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">Network Routing</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-semibold text-xs">BIOS Recovery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio Showcase -->
+    <section id="projects" class="py-24 px-6 bg-white border-b border-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">// FEATURED WORK</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">Flagship Solutions & Case Studies</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="https://github.com/badman2005" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700">
+                        <i class="fa-brands fa-github text-lg"></i> View GitHub Profile (@badman2005)
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- senaEats -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between hover:border-blue-300 transition-all shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-bold text-xs">EasyTech</span>
+                            <span class="text-xs text-slate-500 font-semibold">Web Application</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">senaEats</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            A decentralized P2P township food delivery web application built with a robust PHP/MariaDB backend, live courier dispatch logic, and secure escrow workflow simulation.
+                        </p>
+                        <div class="space-y-2 text-xs text-slate-600 mb-6 font-medium">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> PHP / MariaDB Architecture</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Real-time courier dispatch routing</div>
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200 flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-700">STATUS: LIVE DEPLOYMENT</span>
+                        <span class="text-blue-600 font-semibold text-xs">Case Study →</span>
+                    </div>
+                </div>
+
+                <!-- KachiCam -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between hover:border-blue-300 transition-all shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-bold text-xs">EasyTech</span>
+                            <span class="text-xs text-slate-500 font-semibold">Software Utility</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">KachiCam</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Computational photography software utilizing multi-frame burst merging, algorithmic denoising, and sharpening to elevate budget smartphone camera sensor capabilities.
+                        </p>
+                        <div class="space-y-2 text-xs text-slate-600 mb-6 font-medium">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Python / OpenCV Engine</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-600"></i> Algorithmic image stacking</div>
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200 flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-700">STATUS: IN DEVELOPMENT</span>
+                        <span class="text-blue-600 font-semibold text-xs">Details →</span>
+                    </div>
+                </div>
+
+                <!-- Project TITAN -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 flex flex-col justify-between hover:border-indigo-300 transition-all shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs">Kachi Cables</span>
+                            <span class="text-xs text-slate-500 font-semibold">IoT Hardware</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Project TITAN</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Tactical IoT Telemetry system utilizing ESP32 microcontrollers transmitting sensor data over custom Python/Java backends to local ledgers for supply chain reliability.
+                        </p>
+                        <div class="space-y-2 text-xs text-slate-600 mb-6 font-medium">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> ESP32 Microcontrollers</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Java / Python Telemetry Backends</div>
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200 flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-700">STATUS: PROTOTYPE</span>
+                        <span class="text-indigo-600 font-semibold text-xs">Spec Sheet →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">// GET IN TOUCH</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Let's Discuss Your Project</h2>
+                <p class="text-slate-600 text-sm leading-relaxed mb-8">
+                    Whether you need full-stack web development from EasyTech or hardware maintenance and network diagnostics from Kachi Cables, reach out directly.
+                </p>
+
+                <div class="space-y-4 text-sm font-medium text-slate-700">
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-semibold">Direct Email</div>
+                            <a href="mailto:ckachimfya18@gmail.com" class="text-slate-900 hover:text-blue-600 font-bold">ckachimfya18@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-semibold">Secure Lines</div>
+                            <div class="text-slate-900 font-bold">+260 968 766 720 / +260 573 697 355</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-semibold">GitHub Repository</div>
+                            <a href="https://github.com/badman2005" target="_blank" class="text-slate-900 hover:text-blue-600 font-bold">github.com/badman2005</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">Send a Message</h3>
+                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Your Name</label>
+                        <input type="text" id="clientName" required placeholder="e.g. Sarah Jenkins" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Email Address</label>
+                        <input type="email" id="clientEmail" required placeholder="sarah@company.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Service Inquiry</label>
+                        <select id="serviceType" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition-all">
+                            <option value="EasyTech">EasyTech (Software & Web Development)</option>
+                            <option value="Kachi Cables">Kachi Cables (Hardware & Infrastructure)</option>
+                            <option value="General">General Inquiry / Collaboration</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Project Details</label>
+                        <textarea id="clientMessage" rows="4" required placeholder="Describe your technical requirements..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 transition-all"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-blue-600 text-white font-bold text-sm rounded-xl hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800 text-sm">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="text-white font-bold">ABCstartups</span> © 2026. All rights reserved. Senanga & Kabwe, Zambia.
+            </div>
+            <div class="flex items-center gap-6 font-semibold text-xs">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#divisions" class="hover:text-white transition-colors">Services</a>
+                <a href="#projects" class="hover:text-white transition-colors">Portfolio</a>
+                <a href="https://github.com/badman2005" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+            </div>
+            <div class="text-xs text-slate-500">
+                EasyTech // Kachi Cables
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Submission Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const service = document.getElementById('serviceType').value;
+
+            // Clean, non-alert notification modal or inline confirmation
+            const formContainer = e.target.parentElement;
+            formContainer.innerHTML = `
+                <div class="text-center py-12 space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900">Message Received!</h3>
+                    <p class="text-slate-600 text-sm max-w-sm mx-auto">
+                        Thank you, <strong class="text-slate-900">${name}</strong>. Your inquiry regarding <strong class="text-slate-900">[${service}]</strong> has been dispatched to Kachimfya Chanda at ckachimfya18@gmail.com.
+                    </p>
+                    <button onclick="location.reload()" class="mt-4 px-6 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl">Send Another Message</button>
+                </div>
+            `;
+        }
+    </script>
 </body>
 </html>
